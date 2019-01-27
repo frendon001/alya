@@ -1,28 +1,34 @@
 import React from 'react';
-import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
+import { connect } from 'react-redux';
+import { fetchPhotos } from '../actions';
 
 class App extends React.Component {
   state = { images: [] };
 
-  onSearchSubmit = async term => {
-    const response = await unsplash.get('/search/photos', {
-      params: { query: term }
-    });
-
-    this.setState({ images: response.data.results });
+  onSearchSubmit = term => {
+    this.props.fetchPhotos(term, 1);
   };
 
   render() {
+    const photos = this.props.photos;
+    console.log(photos);
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        Found: {this.state.images.length} images
-        <ImageList images={this.state.images} />
+        Found: {photos.length} images
+        <ImageList images={photos} />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps({ photos }) {
+  return { photos };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchPhotos }
+)(App);
