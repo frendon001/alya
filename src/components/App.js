@@ -13,7 +13,6 @@ class App extends React.Component {
 
   render() {
     const photos = this.props.photos;
-    console.log(photos);
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
