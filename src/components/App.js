@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import ImageList from './ImageList';
 import { connect } from 'react-redux';
 import { fetchPhotos } from '../actions';
+import { bindActionCreators } from 'redux';
 
 class App extends React.Component {
   state = { images: [] };
@@ -27,7 +28,11 @@ function mapStateToProps({ photos }) {
   return { photos };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchPhotos }, dispatch);
+}
+
 export default connect(
   mapStateToProps,
-  { fetchPhotos }
+  mapDispatchToProps
 )(App);
