@@ -15,7 +15,7 @@ class SearchPhotosPage extends React.Component {
   render() {
     const photos = this.props.photos;
     return (
-      <div className="ui container" style={{ marginTop: '10px' }}>
+      <div style={{ marginTop: '10px' }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
         Found: {photos.length} images
         <ImageList images={photos} />
