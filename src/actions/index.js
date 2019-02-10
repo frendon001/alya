@@ -12,3 +12,18 @@ export const fetchPhotos = (term, page) => ({
   type: 'FETCH_PHOTOS',
   payload: { term, page }
 });
+
+export const authCheckStatus = auth => ({
+  type: 'AUTH_CHECK_STATUS',
+  payload: { auth }
+});
+
+// export const authSignIn = auth => ({
+//   type: 'AUTH_SIGN_IN',
+//   payload: { auth }
+// });
+
+// export const authSignOut = auth => ({
+//   type: 'AUTH_SIGN_OUT',
+//   payload: { auth }
+// });
